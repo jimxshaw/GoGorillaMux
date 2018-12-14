@@ -1,3 +1,5 @@
+package models
+
 import (
 	"database/sql"
 	"errors"
