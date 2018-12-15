@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 
 	"github.com/gorilla/mux"
@@ -23,10 +22,16 @@ type App struct {
 // It will create a database connection and wire up the routes to
 // respond to the requirements.
 func (a *App) Initialize(user, password, dbname string) {
-	connectionString := fmt.Sprintf("user=%s password=%s dbname=%s", user, password, dbname)
+	// var connectionString string
+
+	// if len(password) > 0 {
+	// 	connectionString = fmt.Sprintf("postgres://%s:%s@localhost/%s?sslmode=disable", user, password, dbname)
+	// } else {
+	// 	connectionString = fmt.Sprintf("postgres://%s@localhost/%s?sslmode=disable", user, dbname)
+	// }
 
 	var err error
-	a.DB, err = sql.Open("postgres", connectionString)
+	a.DB, err = sql.Open("postgres", "postgres://jimxshaw@localhost/test_db?sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
